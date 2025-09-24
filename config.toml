@@ -1,7 +1,7 @@
 contentdir    = "content"
 layoutdir     = "layouts"
 publishdir    = "public"
-title = "DevOps Blog"
+title = "Hoseki DevOps Blog"
 canonifyurls  = true
 
 DefaultContentLanguage = "en"
@@ -10,9 +10,9 @@ pygmentsUseClasses = true
 pygmentCodeFences = true
 
 [Params]
-  dateFormat = "January 2, 2006"
+  dateFormat = "April 17, 2004"
   commit = false
   rss = false
 
 [Author]
-  name = "Onur Yilmaz"
+  name = "Farid Zahran"
