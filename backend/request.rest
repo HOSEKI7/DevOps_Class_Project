@@ -1,0 +1,38 @@
+GET http://localhost:5000/movies
+
+###
+GET http://localhost:5000/movies/8
+
+###
+POST http://localhost:5000/movies
+Content-Type: application/json
+
+{
+  "title": "La La Land",
+  "genre": "Musical",
+  "synopsis": "While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.",
+  "duration": 128,
+  "director": "Damien Chazelle",
+  "releaseYear": 2016,
+  "trailer": "https://www.youtube.com/watch?v=0pdqf4P9MB8",
+  "streamUrl": "https://www.netflix.com/lalaland",
+  "logo": "https://example.com/lalaland-logo.png",
+  "backdrop": "https://example.com/lalaland-backdrop.jpg",
+  "poster": "https://example.com/lalaland-poster.jpg",
+  "rating": 8.0
+}
+
+###
+PATCH http://localhost:5000/movies/5
+Content-Type: application/json
+
+{
+  "title": "Buku Jelek makin jelek",
+  "genre": "Scam",
+  "description": "Cerita makin ga jelas",
+  "author": "Orang Asing",
+  "publishedAt": 1997
+}
+
+###
+DELETE http://localhost:5000/movies/5
