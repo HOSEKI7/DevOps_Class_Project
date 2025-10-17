@@ -1,38 +1,35 @@
-GET http://localhost:5000/movies
+GET http://localhost:5000/products
 
 ###
-GET http://localhost:5000/movies/8
+GET http://localhost:5000/products/5
 
 ###
-POST http://localhost:5000/movies
+POST http://localhost:5000/products
 Content-Type: application/json
 
 {
-  "title": "La La Land",
-  "genre": "Musical",
-  "synopsis": "While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.",
-  "duration": 128,
-  "director": "Damien Chazelle",
-  "releaseYear": 2016,
-  "trailer": "https://www.youtube.com/watch?v=0pdqf4P9MB8",
-  "streamUrl": "https://www.netflix.com/lalaland",
-  "logo": "https://example.com/lalaland-logo.png",
-  "backdrop": "https://example.com/lalaland-backdrop.jpg",
-  "poster": "https://example.com/lalaland-poster.jpg",
-  "rating": 8.0
+  "title": "Inno X3 Pro",
+  "price": 650000,
+  "realPrice": 799000,
+  "description": "Symmetrical gaming wireless mouse for esports.",
+  "variant": "White",
+  "category": "Mouse",
+  "image": "/images/products/mouse-inno-x3-pro.jpg"
 }
 
 ###
-PATCH http://localhost:5000/movies/5
+PATCH http://localhost:5000/products/16
 Content-Type: application/json
 
 {
-  "title": "Buku Jelek makin jelek",
-  "genre": "Scam",
-  "description": "Cerita makin ga jelas",
-  "author": "Orang Asing",
-  "publishedAt": 1997
+  "title": "Inno X3 Pro Max",
+  "price": 570000,
+  "realPrice": 799000,
+  "description": "Symmetrical gaming 4K hz wireless 2.4 ghz and bluetooth mouse for competitive and esports scene.",
+  "variant": "Black",
+  "category": "Mouse",
+  "image": "https://bimg.akulaku.net/goods/spu/6bc80b581bf043dc804f922f7207b6180112.jpg?w=726&q=80&fit=1"
 }
 
 ###
-DELETE http://localhost:5000/movies/5
+DELETE http://localhost:5000/products/16

@@ -1,26 +1,28 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplikasi CRUD product e-commerce sederhana dengan Express.js dan Prisma",
   "type": "module",
   "main": "index.js",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "prisma": {
-    "seed": "node prisma/seed.js"
-  },
   "dependencies": {
     "@prisma/client": "^6.17.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "lucide-react": "^0.545.0"
+    "express": "^5.1.0"
   },
   "devDependencies": {
-    "prisma": "^6.17.1"
+    "@types/node": "^24.8.1",
+    "prisma": "^6.17.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }

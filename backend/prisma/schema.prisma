@@ -13,20 +13,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Movie {
+model Product {
   id          Int      @id @default(autoincrement())
   title       String
-  genre       String
-  synopsis    String
-  duration    Int
-  director    String
-  releaseYear Int
-  trailer     String?
-  streamUrl   String?
-  logo        String?
-  backdrop    String?
-  poster      String?
-  rating      Float?   @default(0)
+  price       Int
+  realPrice   Int?
+  description String
+  variant     String?
+  category    String?
+  image       String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
