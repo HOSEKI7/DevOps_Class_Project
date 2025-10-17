@@ -15,18 +15,18 @@ export default function Sidebar() {
 
   return (
     <aside className="w-64 h-screen bg-gray-800 text-white flex flex-col fixed">
-      <div className="flex h-20 items-center px-5 py-6 gap-3">
+      <div className="flex h-20 items-center px-6 py-6 gap-4">
         <img
-          src="https://cdn-icons-png.flaticon.com/512/18177/18177252.png"
+          src="https://cdn-icons-png.flaticon.com/512/270/270023.png"
           alt=""
-          className="w-12 h-12"
+          className="w-12 h-12 object-cover rounded-full"
         />
-        <h1 className="text-3xl font-bold ">Frame</h1>
+        <h1 className="text-3xl font-bold ">Admin</h1>
       </div>
 
       <nav className="flex flex-col justify-between h-full p-4">
-        <div className="space-y-2">
-          <p className="text-sm text-gray-500 px-3">MENU</p>
+        <div className="space-y-1 mt-3">
+          <p className="text-sm text-gray-500 px-3 py-1">MENU</p>
           {/* Menu Utama */}
           <Link
             to="/"

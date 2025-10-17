@@ -1,6 +1,6 @@
 # 🛒 HOSEKI — Fullstack E-Commerce Project
 
-![Preview](./assets/preview.png)
+![Preview](./assets/Homepage.png)
 
 **HOSEKI** adalah proyek **E-Commerce Web Application** yang dikembangkan sebagai bagian dari mata kuliah **DevOps (Pengembangan dan Operasi)**.  
 Aplikasi ini dirancang dan dikembangkan **sepenuhnya dari nol** menggunakan **Node.js (Backend)** dan **React.js (Frontend)** dengan konsep **Fullstack Web Development**.
@@ -27,7 +27,7 @@ Proyek ini bertujuan untuk memahami dan menerapkan praktik pengembangan perangka
 
 ### 🧑‍💻 **Admin Panel (Frame)**
 
-![Admin Panel Preview](./assets/admin-panel.png)
+![Admin Panel Preview](./assets/Admin.png)
 
 Admin memiliki akses ke sistem manajemen data dan analitik melalui dashboard yang intuitif:
 
@@ -40,7 +40,8 @@ Admin memiliki akses ke sistem manajemen data dan analitik melalui dashboard yan
 
 ### 🛍️ **E-Commerce Platform (Hoseki Shop)**
 
-![E-Commerce Preview](./assets/user-view.png)
+![E-Commerce Preview](./assets/Login.png)
+![E-Commerce Preview](./assets/Products.png)
 
 Platform utama yang digunakan oleh pengguna (customer):
 
@@ -106,7 +107,9 @@ cd DevOps_Class_Project
 ```bash
 cd backend
 npm install
+npx prisma generate
 npx prisma migrate dev
+npx prisma seed db
 npm run dev
 ```
 
