@@ -16,7 +16,7 @@ Proyek ini bertujuan untuk memahami dan menerapkan praktik pengembangan perangka
 | **Frontend (E-Commerce)**  | React.js, Vite, Tailwind CSS            |
 | **Frontend (Admin Panel)** | React.js, React Router, Axios           |
 | **Backend**                | Node.js, Express.js                     |
-| **Database**               | PostgreSQL / MySQL (melalui Prisma ORM) |
+| **Database**               | MySQL (melalui Prisma ORM)              |
 | **Tools & DevOps**         | Git, GitHub, npm, dotenv, Postman       |
 | **Authentication**         | JWT (JSON Web Token)                    |
 | **Hosting (Opsional)**     | Render / Vercel / Railway (belum final) |
@@ -34,7 +34,7 @@ Admin memiliki akses ke sistem manajemen data dan analitik melalui dashboard yan
 - **Manajemen Produk:** CRUD produk (judul, harga, deskripsi, varian, kategori, gambar).
 - **Manajemen Pengguna:** Menampilkan dan mengelola data pengguna terdaftar.
 - **Manajemen Transaksi & Laporan:** Melihat riwayat transaksi dan data penjualan.
-- **Dark/Light Mode:** Tampilan fleksibel dan modern.
+<!-- - **Dark/Light Mode:** Tampilan fleksibel dan modern. -->
 
 ---
 
@@ -46,10 +46,10 @@ Admin memiliki akses ke sistem manajemen data dan analitik melalui dashboard yan
 Platform utama yang digunakan oleh pengguna (customer):
 
 - **Autentikasi Pengguna:** Login dan registrasi akun.
-- **Daftar Produk Populer:** Menampilkan produk dengan deskripsi, harga asli, dan harga promo.
-- **Keranjang Belanja (Cart):** Tambah produk, hitung total harga secara dinamis.
-- **Antarmuka Responsif:** Desain bersih dan mudah digunakan di desktop maupun mobile.
-- **Integrasi Backend:** Mengambil data produk dan pengguna secara real-time melalui API.
+- **Daftar Produk Populer:** Menampilkan card produk dengan deskripsi, harga asli, dan harga promo.
+- **Keranjang Belanja (Cart):** Tambah produk, hitung total harga secara dinamis dengan state dan hooks.
+<!-- - **Antarmuka Responsif:** Desain bersih dan mudah digunakan di desktop maupun mobile. -->
+- **Integrasi Backend:** Mengambil data produk dan pengguna([fakestoreapi](https://fakestoreapi.com/users)) secara real-time melalui API.
 
 ---
 
@@ -60,8 +60,9 @@ Backend berfungsi sebagai pusat logika bisnis dan penghubung antara database den
 - RESTful API menggunakan **Express.js**
 - Otentikasi berbasis **JWT**
 - Validasi data input
+- Logika CRUD User dan Product
 - Integrasi dengan **Prisma ORM**
-- Endpoint CRUD untuk produk, pengguna, dan transaksi
+- Endpoint CRUD untuk produk, pengguna(on progress), dan transaksi(planned)
 - Pengaturan environment menggunakan `.env`
 
 ---
@@ -104,13 +105,16 @@ cd DevOps_Class_Project
 
 ### 2. Setup Backend
 
+- start mysql server
+- rename /.env.example -> /.env
+
 ```bash
 cd backend
 npm install
 npx prisma generate
 npx prisma migrate dev
 npx prisma seed db
-npm run dev
+nodemon index
 ```
 
 ### 3. Setup Frontend (Shop & Admin)
@@ -129,7 +133,7 @@ Akses aplikasi melalui:
 
 - 🛍️ E-Commerce: `http://localhost:5173`
 - 🧑‍💻 Admin Panel: `http://localhost:5174`
-- ⚙️ API Server: `http://localhost:3000`
+- ⚙️ API Server: `http://localhost:5000`
 
 ---
 
@@ -137,7 +141,7 @@ Akses aplikasi melalui:
 
 Proyek **HOSEKI E-Commerce** ini menjadi wadah untuk:
 
-- Mempelajari **konsep DevOps** dengan mengintegrasikan proses pengembangan dan operasi.
+- Mempelajari **konsep DevOps** dengan mengintegrasikan container, proses pengembangan dan operasi.
 - Mengasah kemampuan **Fullstack Web Development** (Frontend & Backend).
 - Menerapkan **manajemen API, autentikasi, database ORM, dan state management**.
 - Menjalankan praktik kerja tim dan kontrol versi dengan **Git & GitHub**.
@@ -147,19 +151,21 @@ Proyek **HOSEKI E-Commerce** ini menjadi wadah untuk:
 
 ## 🔮 Rencana Pengembangan
 
+- [ ] Mendesain **struktur database user dan api** serta **Logika CRUD data user**
 - [ ] Menambahkan fitur **Checkout dan Payment Gateway**
 - [ ] Menyempurnakan **Dashboard Analitik Penjualan**
 - [ ] Implementasi **CI/CD Pipeline**
-- [ ] Deployment di platform cloud (Render/Vercel/Railway)
-- [ ] Penambahan **Testing (Jest / Vitest)**
+- [ ] Implementasi **Container dan DevOps lain**
+  <!-- - [ ] Deployment di platform cloud (Render/Vercel/Railway) -->
+  <!-- - [ ] Penambahan **Testing (Jest / Vitest)** -->
 
----
+<!-- ---
 
 ## 📸 Preview Screenshots
 
 | Login Page                   | Shop Page                  | Admin Panel                  |
 | ---------------------------- | -------------------------- | ---------------------------- |
-| ![Login](./assets/login.png) | ![Shop](./assets/shop.png) | ![Admin](./assets/admin.png) |
+| ![Login](./assets/login.png) | ![Shop](./assets/shop.png) | ![Admin](./assets/admin.png) | -->
 
 ---
 
