@@ -11,30 +11,30 @@ Proyek ini bertujuan untuk memahami dan menerapkan praktik pengembangan perangka
 
 ## 🚀 Tech Stack
 
-| Layer                      | Teknologi yang Digunakan                |
-| -------------------------- | --------------------------------------- |
-| **Frontend (E-Commerce)**  | React.js, Vite, Tailwind CSS            |
-| **Frontend (Admin Panel)** | React.js, React Router, Axios           |
-| **Backend**                | Node.js, Express.js                     |
-| **Database**               | MySQL (melalui Prisma ORM)              |
-| **Tools & DevOps**         | Git, GitHub, npm, dotenv, Postman       |
-| **Authentication**         | JWT (JSON Web Token)                    |
-| **Hosting (Opsional)**     | Render / Vercel / Railway (belum final) |
+| Layer                      | Teknologi yang Digunakan          |
+| -------------------------- | --------------------------------- |
+| **Frontend (E-Commerce)**  | React.js, Vite, Tailwind CSS      |
+| **Frontend (Admin Panel)** | React.js, React Router, Axios     |
+| **Backend**                | Node.js, Express.js               |
+| **Database**               | MySQL (melalui Prisma ORM)        |
+| **Tools & DevOps**         | Git, GitHub, npm, dotenv, Postman |
+| **Authentication**         | JWT (JSON Web Token)              |
+| **Hosting (Opsional)**     | Vercel (belum final)              |
 
 ---
 
 ## 🧩 Fitur Utama
 
-### 🧑‍💻 **Admin Panel (Frame)**
+### 🧑‍💻 **Admin Panel**
 
 ![Admin Panel Preview](./assets/Admin.png)
 
 Admin memiliki akses ke sistem manajemen data dan analitik melalui dashboard yang intuitif:
 
 - **Manajemen Produk:** CRUD produk (judul, harga, deskripsi, varian, kategori, gambar).
-- **Manajemen Pengguna:** Menampilkan dan mengelola data pengguna terdaftar.
-- **Manajemen Transaksi & Laporan:** Melihat riwayat transaksi dan data penjualan.
-<!-- - **Dark/Light Mode:** Tampilan fleksibel dan modern. -->
+- **Manajemen Pengguna:** Menampilkan dan mengelola data pengguna terdaftar(on progress).
+  <!-- - **Manajemen Transaksi & Laporan:** Melihat riwayat transaksi dan data penjualan. -->
+  <!-- - **Dark/Light Mode:** Tampilan fleksibel dan modern. -->
 
 ---
 
@@ -151,7 +151,8 @@ Proyek **HOSEKI E-Commerce** ini menjadi wadah untuk:
 
 ## 🔮 Rencana Pengembangan
 
-- [ ] Mendesain **struktur database user dan api** serta **Logika CRUD data user**
+- [ ] Mendesain **struktur database user** serta **setup api untuk Logika CRUD data user**
+- [ ] Membagi **hak akses dengan user role(authorization)**
 - [ ] Menambahkan fitur **Checkout dan Payment Gateway**
 - [ ] Menyempurnakan **Dashboard Analitik Penjualan**
 - [ ] Implementasi **CI/CD Pipeline**
