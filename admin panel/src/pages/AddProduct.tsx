@@ -10,23 +10,34 @@ const AddProduct = () => {
   const [price, setPrice] = useState(Number);
   const [realPrice, setRealPrice] = useState(Number);
   const [description, setDescription] = useState("");
-  const [variant, setVariant] = useState("");
+  const [variants, setVariants] = useState([{ name: "", stock: 0 }]);
   const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
+  const [rating, setRating] = useState(Number);
+  const [sold, setSold] = useState(Number);
   const [image, setImage] = useState("");
   const navigate = useNavigate();
 
   const saveProduct = async (e: React.FormEvent) => {
     e.preventDefault();
-    await axios.post("http://localhost:5000/products", {
-      title,
-      price,
-      realPrice,
-      description,
-      variant,
-      category,
-      image,
-    });
-    navigate("/products");
+    try {
+      await axios.post("http://localhost:5000/products", {
+        title,
+        price,
+        realPrice,
+        description,
+        category,
+        brand,
+        rating,
+        sold,
+        image,
+        variants, // kirim array variant
+      });
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to save product");
+    }
   };
 
   return (
@@ -63,19 +74,80 @@ const AddProduct = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <InputForm
-          label="Variant"
-          type="text"
-          placeholder="Product Variant"
-          value={variant}
-          onChange={(e) => setVariant(e.target.value)}
-        />
+        <h3 className="text-lg font-semibold mt-6 mb-2 text-slate-700">
+          Variants
+        </h3>
+        {variants.map((variant, index) => (
+          <div key={index} className="flex gap-3 mb-3">
+            <input
+              type="text"
+              placeholder="Variant Name (e.g. Black, White, ATX)"
+              className="border p-2 w-1/2 rounded-md"
+              value={variant.name}
+              onChange={(e) => {
+                const newVariants = [...variants];
+                newVariants[index].name = e.target.value;
+                setVariants(newVariants);
+              }}
+            />
+            <input
+              type="number"
+              placeholder="Stock"
+              className="border p-2 w-1/3 rounded-md"
+              value={variant.stock}
+              onChange={(e) => {
+                const newVariants = [...variants];
+                newVariants[index].stock = parseInt(e.target.value);
+                setVariants(newVariants);
+              }}
+            />
+            <button
+              type="button"
+              className="bg-red-500 text-white px-3 rounded-md"
+              onClick={() =>
+                setVariants(variants.filter((_, i) => i !== index))
+              }
+            >
+              X
+            </button>
+          </div>
+        ))}
+
+        <button
+          type="button"
+          className="bg-green-500 text-white px-3 py-1 rounded-md"
+          onClick={() => setVariants([...variants, { name: "", stock: 0 }])}
+        >
+          + Add Variant
+        </button>
+
         <InputForm
           label="Category"
           type="text"
           placeholder="Product Category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
+        />
+        <InputForm
+          label="Brand"
+          type="text"
+          placeholder="Product Brand"
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
+        />
+        <InputForm
+          label="Rating"
+          type="number"
+          placeholder="Product Rating"
+          value={rating}
+          onChange={(e) => setRating(parseInt(e.target.value))}
+        />
+        <InputForm
+          label="Sold"
+          type="number"
+          placeholder="Product Sold"
+          value={sold}
+          onChange={(e) => setSold(parseInt(e.target.value))}
         />
         <InputForm
           label="Image"

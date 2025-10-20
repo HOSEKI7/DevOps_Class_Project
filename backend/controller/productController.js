@@ -19,7 +19,9 @@ export const getProductById = async (req, res) => {
       where: {
         id: Number(req.params.id),
       },
-      include: { variants: true },
+      include: {
+        variants: true, // penting!
+      },
     });
     res.status(200).json(response);
   } catch (error) {
@@ -70,33 +72,38 @@ export const updateProduct = async (req, res) => {
     price,
     realPrice,
     description,
+    variants,
     category,
     brand,
     rating,
     sold,
     image,
-    variants,
   } = req.body;
+
   try {
     const product = await prisma.product.update({
-      where: {
-        id: Number(req.params.id),
-      },
+      where: { id: Number(req.params.id) },
       data: {
-        title: title,
-        realPrice: realPrice,
-        price: price,
-        description: description,
-        category: category,
-        brand: brand,
-        rating: rating,
-        sold: sold,
-        image: image,
+        title,
+        price,
+        realPrice,
+        description,
+        category,
+        brand,
+        rating,
+        sold,
+        image,
         variants: {
-          create: variants,
+          deleteMany: {}, // hapus semua dulu (atau bisa pakai updateMany kalau mau)
+          create: variants.map((v) => ({
+            name: v.name,
+            stock: v.stock,
+          })),
         },
       },
+      include: { variants: true },
     });
+
     res.status(200).json(product);
   } catch (error) {
     res.status(400).json({ msg: error.message });
