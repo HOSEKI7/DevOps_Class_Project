@@ -25,7 +25,7 @@ const Footer = () => {
           <form className="flex flex-col sm:flex-row w-full sm:w-fit rounded-md overflow-hidden">
             <input
               type="text"
-              className="p-2 sm:pl-4 w-full sm:w-auto text-black outline-none"
+              className="p-2 sm:pl-4 w-full sm:w-auto outline-none bg-neutral-800 border border-neutral-700 focus:border-neutral-400 rounded-l-lg"
               placeholder="Enter your email"
             />
             <button className="bg-white text-neutral-900 py-2 px-4 font-semibold hover:bg-green-600 hover:text-white transition">
@@ -40,10 +40,18 @@ const Footer = () => {
           </p>
 
           <div className="flex space-x-4 pt-2">
-            <Twitter className="cursor-pointer hover:text-green-500 transition" />
-            <Instagram className="cursor-pointer hover:text-green-500 transition" />
-            <Facebook className="cursor-pointer hover:text-green-500 transition" />
-            <Youtube className="cursor-pointer hover:text-green-500 transition" />
+            <a href="https://twitter.com/faridzahran__" target="blank">
+              <Twitter className="cursor-pointer hover:text-green-600 transition" />
+            </a>
+            <a href="https://www.instagram.com/faridzahran__" target="blank">
+              <Instagram className="cursor-pointer hover:text-green-600 transition" />
+            </a>
+            <a href="https://www.facebook.com/faridzahran__" target="blank">
+              <Facebook className="cursor-pointer hover:text-green-600 transition" />
+            </a>
+            <a href="https://www.youtube.com/@HOSEKIII" target="blank">
+              <Youtube className="cursor-pointer hover:text-green-600 transition" />
+            </a>
           </div>
 
           <p className="flex items-center text-sm space-x-2">
@@ -58,23 +66,23 @@ const Footer = () => {
             <div key={idx} className="space-y-2 min-w-[130px]">
               <p className="font-semibold mb-2">{section}</p>
               <ul className="space-y-1">
-                <li className="hover:text-green-500 cursor-pointer">
+                <li className="hover:text-green-600 cursor-pointer">
                   Contact Us
                 </li>
-                <li className="hover:text-green-500 cursor-pointer">
+                <li className="hover:text-green-600 cursor-pointer">
                   Exchanges & Returns
                 </li>
-                <li className="hover:text-green-500 cursor-pointer">FAQs</li>
-                <li className="hover:text-green-500 cursor-pointer">
+                <li className="hover:text-green-600 cursor-pointer">FAQs</li>
+                <li className="hover:text-green-600 cursor-pointer">
                   Size Chart
                 </li>
-                <li className="hover:text-green-500 cursor-pointer">
+                <li className="hover:text-green-600 cursor-pointer">
                   Delivery Info
                 </li>
-                <li className="hover:text-green-500 cursor-pointer">
+                <li className="hover:text-green-600 cursor-pointer">
                   Track Your Order
                 </li>
-                <li className="hover:text-green-500 cursor-pointer">
+                <li className="hover:text-green-600 cursor-pointer">
                   Offer T&Cs
                 </li>
               </ul>

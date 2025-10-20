@@ -10,14 +10,10 @@ const ProductsPage = () => {
   const [products, setProducts] = useState<Products[]>([]);
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart") || "[]"));
-    getProducts()
-      .then((data) => {
-        console.log("fetched", data);
-        setProducts(data);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+    getProducts((res) => {
+      setProducts(res);
+    });
+  });
 
   useEffect(() => {
     if (products.length > 0 && cart.length > 0) {
@@ -75,13 +71,11 @@ const ProductsPage = () => {
             {products.length > 0 &&
               products.map((product) => (
                 <CardProduct key={product.id}>
-                  <CardProduct.Header
-                    image={product.image}
-                    link={product.link}
-                  />
+                  <CardProduct.Header image={product.image} id={product.id} />
                   <CardProduct.Body
                     name={product.title}
                     variant={product.variant}
+                    id={product.id}
                   >
                     {product.description}
                   </CardProduct.Body>

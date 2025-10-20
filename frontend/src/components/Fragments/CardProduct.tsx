@@ -1,5 +1,6 @@
 import type React from "react";
 import Button from "../Elements/Button/button";
+import { Link } from "react-router";
 
 type CardProductProps = {
   children: React.ReactNode;
@@ -17,21 +18,21 @@ const CardProduct = (props: CardProductProps) => {
 
 type HeaderProps = {
   image: string;
-  link?: string;
+  id: number;
 };
 
 const Header = (props: HeaderProps) => {
-  const { image, link } = props;
+  const { image, id } = props;
 
   return (
-    <div className="bg-white p-3 overflow-hidden hover:border-1 rounded hover:border-slate-200 hover:shadow-[0_0_10px_rgba(0,0,0,0.4)]">
-      <a href={link}>
+    <div className="bg-[#fcf3ec] p-3 overflow-hidden hover:border-1 rounded hover:border-white hover:shadow-[0_0_10px_rgba(0,0,0,0.4)]">
+      <Link to={`/product/${id}`}>
         <img
           src={image}
           alt=""
           className="h-60 w-full object-contain transition-all duration-700 hover:scale-110 hover:rotate-3"
         />
-      </a>
+      </Link>
     </div>
   );
 };
@@ -39,18 +40,19 @@ const Header = (props: HeaderProps) => {
 type BodyProps = {
   name: string;
   children: string;
+  id: number;
   variant?: string;
 };
 
 const Body = (props: BodyProps) => {
-  const { name, variant, children } = props;
+  const { name, variant, children, id } = props;
 
   return (
     <div className="space-y-2">
       <div>
-        <h3 className="text-base">
+        <Link to={`/product/${id}`} className="text-base">
           {name.length > 30 ? name.substring(0, 30) + "..." : name}
-        </h3>
+        </Link>
         <p className="text-xs font-light">{variant}</p>
       </div>
       <div>
@@ -82,7 +84,7 @@ const Footer = (props: FooterProps) => {
           {price !== null
             ? price.toLocaleString("id-ID", {
                 style: "currency",
-                currency: "IDR",
+                currency: "USD",
               })
             : "-"}
         </p>
@@ -90,7 +92,7 @@ const Footer = (props: FooterProps) => {
           {realPrice !== null
             ? realPrice.toLocaleString("id-ID", {
                 style: "currency",
-                currency: "IDR",
+                currency: "USD",
               })
             : "-"}
         </p>

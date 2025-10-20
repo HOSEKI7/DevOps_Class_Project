@@ -4,7 +4,9 @@ const prisma = new PrismaClient();
 
 export const getProduct = async (req, res) => {
   try {
-    const response = await prisma.product.findMany();
+    const response = await prisma.product.findMany({
+      include: { variants: true },
+    });
     res.status(200).json(response);
   } catch (error) {
     res.status(500).json({ msg: error.message });
@@ -17,6 +19,7 @@ export const getProductById = async (req, res) => {
       where: {
         id: Number(req.params.id),
       },
+      include: { variants: true },
     });
     res.status(200).json(response);
   } catch (error) {
@@ -25,8 +28,18 @@ export const getProductById = async (req, res) => {
 };
 
 export const createProduct = async (req, res) => {
-  const { title, price, realPrice, description, variant, category, image } =
-    req.body;
+  const {
+    title,
+    price,
+    realPrice,
+    description,
+    category,
+    brand,
+    rating,
+    sold,
+    image,
+    variants,
+  } = req.body;
   try {
     const product = await prisma.product.create({
       data: {
@@ -34,10 +47,16 @@ export const createProduct = async (req, res) => {
         realPrice: realPrice,
         price: price,
         description: description,
-        variant: variant,
         category: category,
+        brand: brand,
+        rating: rating,
+        sold: sold,
         image: image,
+        variants: {
+          create: variants,
+        },
       },
+      include: { variants: true },
     });
     res.status(201).json(product);
   } catch (error) {
@@ -46,8 +65,18 @@ export const createProduct = async (req, res) => {
 };
 
 export const updateProduct = async (req, res) => {
-  const { title, price, realPrice, description, variant, category, image } =
-    req.body;
+  const {
+    title,
+    price,
+    realPrice,
+    description,
+    category,
+    brand,
+    rating,
+    sold,
+    image,
+    variants,
+  } = req.body;
   try {
     const product = await prisma.product.update({
       where: {
@@ -58,9 +87,14 @@ export const updateProduct = async (req, res) => {
         realPrice: realPrice,
         price: price,
         description: description,
-        variant: variant,
         category: category,
+        brand: brand,
+        rating: rating,
+        sold: sold,
         image: image,
+        variants: {
+          create: variants,
+        },
       },
     });
     res.status(200).json(product);
