@@ -4,15 +4,18 @@ import { Link } from "react-router";
 
 type CardProductProps = {
   children: React.ReactNode;
+  id: number;
 };
 
 const CardProduct = (props: CardProductProps) => {
-  const { children } = props;
+  const { children, id } = props;
 
   return (
-    <div className="w-full flex flex-col gap-5 justify-between bg-slate-100 p-3 rounded">
-      {children}
-    </div>
+    <Link to={`/product/${id}`}>
+      <div className="flex flex-col gap-5 justify-between bg-neutral-100 p-4 rounded-lg shadow hover:bg-neutral-200 transform hover:-translate-y-2 transition duration-300">
+        {children}
+      </div>
+    </Link>
   );
 };
 
@@ -25,7 +28,7 @@ const Header = (props: HeaderProps) => {
   const { image, id } = props;
 
   return (
-    <div className="bg-[#fcf3ec] p-3 overflow-hidden hover:border-1 rounded hover:border-white hover:shadow-[0_0_10px_rgba(0,0,0,0.4)]">
+    <div className="bg-neutral-50 p-3 overflow-hidden hover:border-1 rounded hover:border-white hover:shadow-[0_0_10px_rgba(0,0,0,0.4)]">
       <Link to={`/product/${id}`}>
         <img
           src={image}
@@ -100,7 +103,7 @@ const Footer = (props: FooterProps) => {
       <div className="flex items-end">
         <Button
           type="button"
-          classname="bg-[#185839]"
+          classname="bg-[#185839] text-white"
           onClick={() => handleAddToCart(id)}
         >
           Add to cart

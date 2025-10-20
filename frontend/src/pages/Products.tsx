@@ -70,7 +70,7 @@ const ProductsPage = () => {
           <div className="grid grid-cols-3 gap-6">
             {products.length > 0 &&
               products.map((product) => (
-                <CardProduct key={product.id}>
+                <CardProduct key={product.id} id={product.id}>
                   <CardProduct.Header image={product.image} id={product.id} />
                   <CardProduct.Body
                     name={product.title}
