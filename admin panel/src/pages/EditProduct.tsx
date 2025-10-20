@@ -43,7 +43,10 @@ const EditProduct = () => {
         // cek apakah variants ada dan berbentuk array
         if (Array.isArray(data.variants)) {
           setVariants(
-            data.variants.map((v) => ({ name: v.name, stock: v.stock }))
+            data.variants.map((v: { name: string; stock: number }) => ({
+              name: v.name,
+              stock: v.stock,
+            }))
           );
         } else {
           setVariants([{ name: "", stock: 0 }]);
@@ -74,7 +77,7 @@ const EditProduct = () => {
         sold,
         image,
       });
-      navigate("/products");
+      navigate("/");
     } catch (err) {
       console.error("Failed to update product:", err);
     }

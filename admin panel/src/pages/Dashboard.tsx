@@ -8,8 +8,11 @@ interface Product {
   price: number;
   realPrice: number;
   description: string;
-  variant: string;
+  variants: string;
   category: string;
+  brand: string;
+  rating: number;
+  sold: number;
   image: string;
 }
 
@@ -63,6 +66,7 @@ const ProductList = () => {
               <th className="py-3 px-6">Description</th>
               <th className="py-3 px-6">Variant</th>
               <th className="py-3 px-6">Category</th>
+              <th className="py-3 px-6">Brand</th>
               <th className="py-3 px-6">Image</th>
               <th className="py-3 px-6 text-center">Actions</th>
             </tr>
@@ -85,8 +89,25 @@ const ProductList = () => {
                 <td className="py-3 px-6 text-gray-700 break-all">
                   {product.description}
                 </td>
-                <td className="py-3 px-6">{product.variant}</td>
+                <td className="py-3 px-6">
+                  {Array.isArray(product.variants) &&
+                  product.variants.length > 0 ? (
+                    <ul>
+                      {product.variants.map(
+                        (v: { id: number; name: string; stock: number }) => (
+                          <li key={v.id}>
+                            {v.name} ({v.stock})
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  ) : (
+                    <span className="text-gray-400">No variants</span>
+                  )}
+                </td>
+
                 <td className="py-3 px-6">{product.category}</td>
+                <td className="py-3 px-6">{product.brand}</td>
                 <td className="py-3 px-6 break-all">{product.image}</td>
 
                 <td className="py-3 px-4 text-center">
