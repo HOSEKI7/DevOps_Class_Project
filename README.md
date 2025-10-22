@@ -1,8 +1,8 @@
-# 🛒 HOSEKI — Fullstack E-Commerce Project
+# 🛒 HOSEKI Shops — Fullstack E-Commerce Project
 
 ![Preview](./assets/Homepage.png)
 
-**HOSEKI** adalah proyek **E-Commerce Web Application** yang dikembangkan sebagai bagian dari mata kuliah **DevOps (Pengembangan dan Operasi)**.  
+**HOSEKI Shops** adalah proyek **E-Commerce Web Application** yang dikembangkan sebagai bagian dari mata kuliah **DevOps (Pengembangan dan Operasi)**.  
 Aplikasi ini dirancang dan dikembangkan **sepenuhnya dari nol** menggunakan **Node.js (Backend)** dan **React.js (Frontend)** dengan konsep **Fullstack Web Development**.
 
 Proyek ini bertujuan untuk memahami dan menerapkan praktik pengembangan perangkat lunak modern mulai dari desain arsitektur, manajemen database, hingga pengoperasian (deployment) dalam konteks DevOps.
