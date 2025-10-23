@@ -113,7 +113,7 @@ cd backend
 npm install
 npx prisma generate
 npx prisma migrate dev
-npx prisma seed db
+npx prisma db seed
 nodemon index
 ```
 
