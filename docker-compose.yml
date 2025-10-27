@@ -1,0 +1,51 @@
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hosekishops
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - hosekishops-network
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+    env_file:
+      - ./backend/.env.docker
+    networks:
+      - hosekishops-network
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - hosekishops-network
+
+  admin-panel:
+    build: ./admin-panel
+    container_name: admin-panel
+    ports:
+      - "5174:5174"
+    depends_on:
+      - backend
+    networks:
+      - hosekishops-network
+
+volumes:
+  db_data:
+
+networks:
+  hosekishops-network:
