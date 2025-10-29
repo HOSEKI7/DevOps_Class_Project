@@ -112,13 +112,21 @@ export const updateProduct = async (req, res) => {
 
 export const deleteProduct = async (req, res) => {
   try {
-    const product = await prisma.product.delete({
-      where: {
-        id: Number(req.params.id),
-      },
+    const id = Number(req.params.id);
+
+    // hapus semua variant terkait produk ini
+    await prisma.productVariant.deleteMany({
+      where: { productId: id },
     });
+
+    // baru hapus produknya
+    const product = await prisma.product.delete({
+      where: { id },
+    });
+
     res.status(200).json(product);
   } catch (error) {
+    console.error(error);
     res.status(400).json({ msg: error.message });
   }
 };

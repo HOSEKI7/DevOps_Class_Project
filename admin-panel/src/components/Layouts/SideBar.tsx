@@ -14,8 +14,8 @@ export default function Sidebar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <aside className="w-64 h-screen bg-gray-800 text-white flex flex-col fixed">
-      <div className="flex h-20 items-center px-6 py-6 gap-4">
+    <aside className="w-67 h-screen bg-[#15161a] text-white flex flex-col fixed">
+      <div className="flex h-20 items-center px-8 py-6 gap-4">
         <img
           src="https://cdn-icons-png.flaticon.com/512/270/270023.png"
           alt=""
@@ -54,19 +54,19 @@ export default function Sidebar() {
             {isOpen && (
               <div className="ml-4 mt-1 space-y-1">
                 <Link
-                  to="/user"
+                  to="/users"
                   className="flex items-center py-2 px-3 rounded gap-1 hover:bg-gray-700"
                 >
                   Pengguna
                 </Link>
                 <Link
-                  to="/"
+                  to="/Products"
                   className="block py-2 px-3 rounded hover:bg-gray-700"
                 >
                   Produk
                 </Link>
                 <Link
-                  to="/"
+                  to="/transaksi"
                   className="block py-2 px-3 rounded hover:bg-gray-700"
                 >
                   Transaksi
@@ -77,14 +77,14 @@ export default function Sidebar() {
 
           {/* Menu lain */}
           <Link
-            to="/"
+            to="/laporan"
             className="flex items-center gap-2 py-2 px-3 rounded hover:bg-gray-700"
           >
             <UserRoundMinus size={18} />
             Laporan
           </Link>
           <Link
-            to="/s"
+            to="/settings"
             className="flex items-center gap-2 py-2 px-3 rounded hover:bg-gray-700"
           >
             <Bolt size={18} />

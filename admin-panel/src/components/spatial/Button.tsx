@@ -2,17 +2,20 @@ type ButtonProps = {
   children: string;
   type: "button" | "submit" | "reset";
   style?: string;
+  onClick?: () => void;
 };
 
 const Button = (props: ButtonProps) => {
-  const { children, type, style } = props;
+  const { children, type, style, onClick } = props;
 
   return (
-    <div>
-      <button type={type} className={`mt-4 px-4 py-2 rounded ${style}`}>
-        {children}
-      </button>
-    </div>
+    <button
+      type={type}
+      onClick={onClick}
+      className={`px-4 py-2 rounded ${style}`}
+    >
+      {children}
+    </button>
   );
 };
 
