@@ -49,3 +49,4 @@ volumes:
 
 networks:
   hosekishops-network:
+    external: true
