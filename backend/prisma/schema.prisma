@@ -14,14 +14,16 @@ datasource db {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
+  id          Int              @id @default(autoincrement())
   title       String
   price       Int
   realPrice   Int?
   description String
-  variant     String?
   category    String?
+  brand       String?
+  rating      Float
+  sold        Int?
   image       String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
 }

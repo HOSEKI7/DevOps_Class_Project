@@ -2,31 +2,40 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
-import Button from "../components/spatial/Button";
-import InputForm from "../components/spatial/InputForm";
+import Button from "../components/Elements/Button";
+import InputForm from "../components/Elements/InputForm";
 
 const AddProduct = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(Number);
   const [realPrice, setRealPrice] = useState(Number);
   const [description, setDescription] = useState("");
-  const [variant, setVariant] = useState("");
   const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
+  const [rating, setRating] = useState(Number);
+  const [sold, setSold] = useState(Number);
   const [image, setImage] = useState("");
   const navigate = useNavigate();
 
   const saveProduct = async (e: React.FormEvent) => {
     e.preventDefault();
-    await axios.post("http://localhost:5000/products", {
-      title,
-      price,
-      realPrice,
-      description,
-      variant,
-      category,
-      image,
-    });
-    navigate("/products");
+    try {
+      await axios.post("http://localhost:5000/products", {
+        title,
+        price,
+        realPrice,
+        description,
+        category,
+        brand,
+        rating,
+        sold,
+        image,
+      });
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to save product");
+    }
   };
 
   return (
@@ -63,19 +72,34 @@ const AddProduct = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <InputForm
-          label="Variant"
-          type="text"
-          placeholder="Product Variant"
-          value={variant}
-          onChange={(e) => setVariant(e.target.value)}
-        />
+
         <InputForm
           label="Category"
           type="text"
           placeholder="Product Category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
+        />
+        <InputForm
+          label="Brand"
+          type="text"
+          placeholder="Product Brand"
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
+        />
+        <InputForm
+          label="Rating"
+          type="number"
+          placeholder="Product Rating"
+          value={rating}
+          onChange={(e) => setRating(parseInt(e.target.value))}
+        />
+        <InputForm
+          label="Sold"
+          type="number"
+          placeholder="Product Sold"
+          value={sold}
+          onChange={(e) => setSold(parseInt(e.target.value))}
         />
         <InputForm
           label="Image"

@@ -64,7 +64,7 @@ const Navbar = () => {
           <CartFragment isVisible={isCartVisible} />
         </div>
 
-        <Button onClick={handleLogout} classname="bg-[#185839]">
+        <Button onClick={handleLogout} classname="bg-[#185839] text-white">
           Logout
         </Button>
       </div>

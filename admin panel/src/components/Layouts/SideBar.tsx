@@ -54,19 +54,19 @@ export default function Sidebar() {
             {isOpen && (
               <div className="ml-4 mt-1 space-y-1">
                 <Link
-                  to="/user"
+                  to="/users"
                   className="flex items-center py-2 px-3 rounded gap-1 hover:bg-gray-700"
                 >
                   Pengguna
                 </Link>
                 <Link
-                  to="/"
+                  to="products"
                   className="block py-2 px-3 rounded hover:bg-gray-700"
                 >
                   Produk
                 </Link>
                 <Link
-                  to="/"
+                  to="/transaksi"
                   className="block py-2 px-3 rounded hover:bg-gray-700"
                 >
                   Transaksi
@@ -77,14 +77,14 @@ export default function Sidebar() {
 
           {/* Menu lain */}
           <Link
-            to="/"
+            to="/reports"
             className="flex items-center gap-2 py-2 px-3 rounded hover:bg-gray-700"
           >
             <UserRoundMinus size={18} />
             Laporan
           </Link>
           <Link
-            to="/s"
+            to="/settings"
             className="flex items-center gap-2 py-2 px-3 rounded hover:bg-gray-700"
           >
             <Bolt size={18} />
@@ -93,7 +93,7 @@ export default function Sidebar() {
         </div>
         <div className="">
           <Link
-            to="/"
+            to="/logout"
             className="flex items-center gap-2 py-2 px-3 rounded hover:bg-gray-700"
           >
             <LogOut size={18} />

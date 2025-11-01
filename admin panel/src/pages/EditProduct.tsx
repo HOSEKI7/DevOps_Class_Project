@@ -2,16 +2,18 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router";
 
-import Button from "../components/spatial/Button";
-import InputForm from "../components/spatial/InputForm";
+import Button from "../components/Elements/Button";
+import InputForm from "../components/Elements/InputForm";
 
 const EditProduct = () => {
   const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
-  const [realPrice, setRealPrice] = useState(0);
+  const [price, setPrice] = useState(Number);
+  const [realPrice, setRealPrice] = useState(Number);
   const [description, setDescription] = useState("");
-  const [variant, setVariant] = useState("");
   const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
+  const [rating, setRating] = useState(Number);
+  const [sold, setSold] = useState(Number);
   const [image, setImage] = useState("");
 
   const [loading, setLoading] = useState(true);
@@ -20,44 +22,51 @@ const EditProduct = () => {
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    setTimeout(() => {
-      const getProductById = async () => {
-        try {
-          const response = await axios.get(
-            `http://localhost:5000/products/${id}`
-          );
-          const data = response.data;
+    const getProductById = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/products/${id}`
+        );
+        const data = response.data;
 
-          setTitle(data.title || "");
-          setPrice(data.price || 0);
-          setRealPrice(data.realPrice || 0);
-          setDescription(data.description || "");
-          setVariant(data.variant || "");
-          setCategory(data.category || "");
-          setImage(data.image || "");
+        setTitle(data.title || "");
+        setPrice(data.price || 0);
+        setRealPrice(data.realPrice || 0);
+        setDescription(data.description || "");
+        setCategory(data.category || "");
+        setBrand(data.brand || "");
+        setRating(data.rating || 0);
+        setSold(data.sold || 0);
+        setImage(data.image || "");
 
-          setLoading(false);
-        } catch (error) {
-          console.error("Failed to fetch product:", error);
-          setLoading(false);
-        }
-      };
-      getProductById();
-    }, 1);
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch product:", error);
+        setLoading(false);
+      }
+    };
+
+    getProductById();
   }, [id]);
 
   const updateProduct = async (e: React.FormEvent) => {
     e.preventDefault();
-    await axios.patch(`http://localhost:5000/products/${id}`, {
-      title,
-      price,
-      realPrice,
-      description,
-      variant,
-      category,
-      image,
-    });
-    navigate("/products");
+    try {
+      await axios.patch(`http://localhost:5000/products/${id}`, {
+        title,
+        price,
+        realPrice,
+        description,
+        category,
+        brand,
+        rating,
+        sold,
+        image,
+      });
+      navigate("/products");
+    } catch (err) {
+      console.error("Failed to update product:", err);
+    }
   };
 
   const Loading = () => {
@@ -107,18 +116,32 @@ const EditProduct = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
         <InputForm
-          label="Variant"
-          type="text"
-          placeholder="Product Variant"
-          value={variant}
-          onChange={(e) => setVariant(e.target.value)}
-        />
-        <InputForm
           label="Category"
           type="text"
           placeholder="Product Category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
+        />
+        <InputForm
+          label="Brand"
+          type="text"
+          placeholder="Product Brand"
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
+        />
+        <InputForm
+          label="Rating"
+          type="number"
+          placeholder="Product Rating"
+          value={rating}
+          onChange={(e) => setRating(Number(e.target.value))}
+        />
+        <InputForm
+          label="Sold"
+          type="number"
+          placeholder="Product Sold"
+          value={sold}
+          onChange={(e) => setSold(Number(e.target.value))}
         />
         <InputForm
           label="Image"

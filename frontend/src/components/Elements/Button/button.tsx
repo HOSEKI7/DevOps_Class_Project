@@ -15,7 +15,7 @@ const Button = (props: ButtonProps) => {
 
   return (
     <button
-      className={`px-4 py-2 font-semibold rounded-md ${classname} text-white cursor-pointer`}
+      className={`px-4 py-2 font-semibold rounded-md ${classname} cursor-pointer`}
       type={type}
       onClick={onClick}
     >

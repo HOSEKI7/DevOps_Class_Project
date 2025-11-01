@@ -24,10 +24,7 @@ const App = () => {
             <Route path="*" element={<NotFoundPage />} />
             <Route element={<ContainerLayout />}>
               <Route path="/products" element={<ProductsPage />} />
-              <Route
-                path="/products/:productSlug"
-                element={<ProductDetailPage />}
-              />
+              <Route path="/product/:id" element={<ProductDetailPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
             </Route>

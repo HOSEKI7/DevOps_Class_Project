@@ -25,8 +25,17 @@ export const getProductById = async (req, res) => {
 };
 
 export const createProduct = async (req, res) => {
-  const { title, price, realPrice, description, variant, category, image } =
-    req.body;
+  const {
+    title,
+    price,
+    realPrice,
+    description,
+    category,
+    brand,
+    rating,
+    sold,
+    image,
+  } = req.body;
   try {
     const product = await prisma.product.create({
       data: {
@@ -34,8 +43,10 @@ export const createProduct = async (req, res) => {
         realPrice: realPrice,
         price: price,
         description: description,
-        variant: variant,
         category: category,
+        brand: brand,
+        rating: rating,
+        sold: sold,
         image: image,
       },
     });
@@ -46,23 +57,34 @@ export const createProduct = async (req, res) => {
 };
 
 export const updateProduct = async (req, res) => {
-  const { title, price, realPrice, description, variant, category, image } =
-    req.body;
+  const {
+    title,
+    price,
+    realPrice,
+    description,
+    category,
+    brand,
+    rating,
+    sold,
+    image,
+  } = req.body;
+
   try {
     const product = await prisma.product.update({
-      where: {
-        id: Number(req.params.id),
-      },
+      where: { id: Number(req.params.id) },
       data: {
-        title: title,
-        realPrice: realPrice,
-        price: price,
-        description: description,
-        variant: variant,
-        category: category,
-        image: image,
+        title,
+        price,
+        realPrice,
+        description,
+        category,
+        brand,
+        rating,
+        sold,
+        image,
       },
     });
+
     res.status(200).json(product);
   } catch (error) {
     res.status(400).json({ msg: error.message });
