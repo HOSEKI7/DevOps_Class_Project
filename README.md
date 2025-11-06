@@ -19,7 +19,7 @@ Proyek ini bertujuan untuk memahami dan menerapkan praktik pengembangan perangka
 | **Database**               | MySQL (melalui Prisma ORM)                    |
 | **Tools & DevOps**         | Git, GitHub, npm, dotenv, Postman             |
 | **Authentication**         | JWT (JSON Web Token)                          |
-| **Hosting (Planned)**      | Docker/Podman                                 |
+| **Hosting**                | Docker                                        |
 
 ---
 
