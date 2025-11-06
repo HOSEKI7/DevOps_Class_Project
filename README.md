@@ -11,15 +11,15 @@ Proyek ini bertujuan untuk memahami dan menerapkan praktik pengembangan perangka
 
 ## 🚀 Tech Stack
 
-| Layer                      | Teknologi yang Digunakan          |
-| -------------------------- | --------------------------------- |
-| **Frontend (E-Commerce)**  | React.js, Vite, Tailwind CSS      |
-| **Frontend (Admin Panel)** | React.js, React Router, Axios     |
-| **Backend**                | Node.js, Express.js               |
-| **Database**               | MySQL (melalui Prisma ORM)        |
-| **Tools & DevOps**         | Git, GitHub, npm, dotenv, Postman |
-| **Authentication**         | JWT (JSON Web Token)              |
-| **Hosting (Planned)**      | Docker/Podman                     |
+| Layer                      | Teknologi yang Digunakan                      |
+| -------------------------- | --------------------------------------------- |
+| **Frontend (E-Commerce)**  | React.js, Vite, Tailwind CSS                  |
+| **Frontend (Admin Panel)** | React.js, React Router, Axios, Redux Toolkit  |
+| **Backend**                | Node.js, Express.js                           |
+| **Database**               | MySQL (melalui Prisma ORM)                    |
+| **Tools & DevOps**         | Git, GitHub, npm, dotenv, Postman             |
+| **Authentication**         | JWT (JSON Web Token)                          |
+| **Hosting (Planned)**      | Docker/Podman                                 |
 
 ---
 
@@ -112,7 +112,7 @@ cd DevOps_Class_Project
 cd backend
 npm install
 npx prisma generate
-npx prisma migrate dev
+npx prisma migrate deploy
 npx prisma db seed
 nodemon index
 ```
