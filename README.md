@@ -156,7 +156,6 @@ Proyek **HOSEKI E-Commerce** ini menjadi wadah untuk:
 - [ ] Menambahkan fitur **Checkout dan Payment Gateway**
 - [ ] Menyempurnakan **Dashboard Analitik Penjualan**
 - [ ] Implementasi **CI/CD Pipeline**
-- [ ] Implementasi **Container dan DevOps lain**
   <!-- - [ ] Deployment di platform cloud (Render/Vercel/Railway) -->
   <!-- - [ ] Penambahan **Testing (Jest / Vitest)** -->
 
