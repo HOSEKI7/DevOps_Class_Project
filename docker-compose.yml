@@ -1,0 +1,73 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql8-container
+    env_file:
+      - ./envs/.env.mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: backend-hosekishops
+    container_name: backend-container-hosekishops
+    env_file:
+      - ./envs/.env.docker
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: frontend-hosekishops
+    container_name: frontend-container-hosekishops
+    environment:
+      - VITE_API_URL=http://backend:5000
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  admin:
+    build:
+      context: ./admin-panel
+      dockerfile: Dockerfile
+    image: admin-panel-hosekishops
+    container_name: admin-container-hosekishops
+    environment:
+      - VITE_API_URL=http://backend:5000
+    ports:
+      - "5174:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - app-network
+
+volumes:
+  mysql_data:
+
+networks:
+  app-network:
+    driver: bridge
