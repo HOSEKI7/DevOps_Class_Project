@@ -24,7 +24,11 @@ const ProductDetailPage = () => {
   useEffect(() => {
     if (!id) return;
     getDetailProducts(id, (data) => {
-      setProduct(data);
+      if (Array.isArray(data) && data.length > 0) {
+        setProduct(data[0]);
+      } else if (!Array.isArray(data) && data) {
+        setProduct(data);
+      }
       setLoading(false);
     });
   }, [id]);

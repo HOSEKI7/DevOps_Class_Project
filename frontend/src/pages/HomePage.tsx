@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const HomePage = () => {
   return (
     <div className="">
@@ -9,9 +11,12 @@ const HomePage = () => {
           <p className="mt-4 text-xl text-[#fcf3ec]">
             Your one-stop shop for all things tech and gadgets!
           </p>
-          <button className="mt-6 py-2 rounded-xl text-white bg-green-800 hover:bg-green-900 transition-colors duration-300 px-20 font-semibold border-1 border-white cursor-pointer">
+          <Link
+            to={"/products"}
+            className="mt-6 py-2 rounded-xl text-white bg-green-800 hover:bg-green-900 transition-colors duration-300 px-20 font-semibold border-1 border-white cursor-pointer"
+          >
             Shop Now
-          </button>
+          </Link>
         </div>
       </div>
     </div>
