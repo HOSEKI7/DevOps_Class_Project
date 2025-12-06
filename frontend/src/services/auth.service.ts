@@ -6,7 +6,7 @@ interface LoginCredentials {
   password: string;
 }
 
-interface jtw {
+interface jwt {
   user: string;
 }
 
@@ -21,6 +21,6 @@ export const login = (
 };
 
 export const getUsername = (token: string) => {
-  const decoded = jwtDecode<jtw>(token);
+  const decoded = jwtDecode<jwt>(token);
   return decoded.user;
 };

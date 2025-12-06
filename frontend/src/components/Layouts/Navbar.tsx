@@ -2,11 +2,33 @@ import { Link, NavLink } from "react-router";
 import { User, Search, Handbag, ChevronDown } from "lucide-react";
 import Button from "../Elements/Button/button";
 import CartFragment from "../Fragments/CartFragment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
+import { useSelector } from "react-redux";
+import type { Products } from "../../types/products";
+import { getProducts } from "../../services/product.service";
 
 const Navbar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
+  const [totalItem, setTotalItem] = useState(0);
+  const cart = useSelector((state) => state.cart.data);
+
+  const [products, setProducts] = useState<Products[]>([]);
+
+  useEffect(() => {
+    // Ambil data produk pakai callback
+    getProducts((data: Products[]) => {
+      console.log("fetched", data);
+      setProducts(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    const sumItem = cart.reduce((total: number, item: { quantity: number }) => {
+      return total + item.quantity;
+    }, 0);
+    setTotalItem(sumItem);
+  }, [cart]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -56,12 +78,17 @@ const Navbar = () => {
         <Search />
 
         <div
-          className="relative"
+          className="relative mr-6"
           onMouseEnter={() => setIsCartVisible(true)}
           onMouseLeave={() => setIsCartVisible(false)}
         >
-          <Handbag className="cursor-pointer" />
-          <CartFragment isVisible={isCartVisible} />
+          <div className="flex gap-1">
+            <Handbag className="cursor-pointer" />
+            <p className="absolute ml-2 bottom-4 rounded-lg border px-2.5 font-semibold bg-[#185839] text-white text-sm text-center items-center py-0.5">
+              {totalItem}
+            </p>
+          </div>
+          <CartFragment products={products} isVisible={isCartVisible} />
         </div>
 
         <Button onClick={handleLogout} classname="bg-[#185839] text-white">

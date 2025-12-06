@@ -10,8 +10,11 @@ import NotFoundPage from "./pages/NotFoundPage";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { MainLayout } from "./components/Layouts/MainLayout";
 import ContainerLayout from "./components/Layouts/ContainerLayout";
+import { useAuth } from "./hooks/useAuth";
 
 const App = () => {
+  useAuth();
+
   return (
     <div>
       <Routes>

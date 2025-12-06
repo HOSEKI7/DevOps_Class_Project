@@ -1,6 +1,8 @@
 import type React from "react";
 import Button from "../Elements/Button/button";
 import { Link } from "react-router";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice";
 
 type CardProductProps = {
   children: React.ReactNode;
@@ -80,12 +82,12 @@ const Body = (props: BodyProps) => {
 type FooterProps = {
   price: number | null;
   realPrice: number | null;
-  handleAddToCart: (id: number) => void;
   id: number;
 };
 
 const Footer = (props: FooterProps) => {
-  const { price, realPrice, handleAddToCart, id } = props;
+  const { price, realPrice, id } = props;
+  const dispatch = useDispatch();
 
   return (
     <div className="flex flex-row justify-between px-4 items-center">
@@ -111,7 +113,7 @@ const Footer = (props: FooterProps) => {
         <Button
           type="button"
           classname="bg-[#185839] text-white hover:bg-green-700 transition-colors duration-300 "
-          onClick={() => handleAddToCart(id)}
+          onClick={() => dispatch(addToCart({ id, quantity: 1 }))}
         >
           Add to cart
         </Button>

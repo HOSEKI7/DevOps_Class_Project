@@ -5,10 +5,10 @@ export interface Products {
   title: string;
   price: number;
   realPrice?: number;
-  description: string;
+  description?: string;
   category: string;
   brand?: string;
   image: string;
-  rating: GLfloat;
-  sold: number;
+  rating?: GLfloat;
+  sold?: number;
 }
