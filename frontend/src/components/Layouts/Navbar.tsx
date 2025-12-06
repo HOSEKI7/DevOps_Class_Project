@@ -2,13 +2,15 @@ import { Link, NavLink } from "react-router";
 import { User, Search, Handbag, ChevronDown } from "lucide-react";
 import Button from "../Elements/Button/button";
 import CartFragment from "../Fragments/CartFragment";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { useSelector } from "react-redux";
 import type { Products } from "../../types/products";
 import { getProducts } from "../../services/product.service";
+import { DarkMode } from "../../context/darkMode";
 
 const Navbar = () => {
+  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [totalItem, setTotalItem] = useState(0);
   const cart = useSelector((state) => state.cart.data);
@@ -38,7 +40,11 @@ const Navbar = () => {
   const username = useAuth().username;
 
   return (
-    <nav className="flex justify-between items-center p-4 bg-white text-black drop-shadow-sm">
+    <nav
+      className={`flex justify-between items-center p-4 drop-shadow-sm ${
+        isDarkMode ? "bg-[#181818] text-white" : "bg-white text-black"
+      }`}
+    >
       <div className="flex justify-center items-center md:pl-14">
         <img src="/images/Hoseki Shops Logo.png" alt="" className="h-18" />
       </div>
@@ -71,6 +77,16 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex space-x-3 md:p-4 items-center">
+        <div>
+          <Button
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            classname={`${
+              isDarkMode ? "bg-[#185839] text-white" : "bg-[#185839] text-white"
+            }`}
+          >
+            {isDarkMode ? "Light" : "Dark"}
+          </Button>
+        </div>
         <p>{username}</p>
         <Link to="/login">
           <User />

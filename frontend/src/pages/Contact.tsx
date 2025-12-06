@@ -1,12 +1,25 @@
+import { useContext } from "react";
+import { DarkMode } from "../context/darkMode";
+
 const Contact = () => {
+  const { isDarkMode } = useContext(DarkMode);
+
   return (
-    <section className="min-h-screen bg-gray-50 text-gray-800 py-16 px-6 flex flex-col items-center">
+    <section
+      className={`min-h-screen  py-16 px-6 flex flex-col items-center ${
+        isDarkMode ? "bg-[#191a1c] text-white" : "bg-gray-50 text-gray-800"
+      }`}
+    >
       {/* Header */}
       <div className="max-w-4xl text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-extrabold text-green-800 mb-4">
           Hubungi Kami
         </h1>
-        <p className="text-lg text-gray-600">
+        <p
+          className={`text-lg ${
+            isDarkMode ? "text-gray-300" : "text-gray-600"
+          }`}
+        >
           Ada pertanyaan, saran, atau butuh bantuan? Tim kami siap membantu
           Anda.
         </p>
@@ -15,7 +28,13 @@ const Contact = () => {
       {/* Contact Content */}
       <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         {/* Contact Form */}
-        <form className="bg-white shadow-lg rounded-xl p-8 border border-gray-100">
+        <form
+          className={`shadow-lg rounded-xl p-8 border ${
+            isDarkMode
+              ? "bg-{#1f2022} border-neutral-600"
+              : "bg-white border-gray-200"
+          }`}
+        >
           <h2 className="text-2xl font-semibold text-green-800 mb-6">
             Kirim Pesan
           </h2>

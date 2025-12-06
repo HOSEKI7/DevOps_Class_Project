@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/products";
+import { DarkMode } from "../../context/darkMode";
 
 interface VisibleProps {
   isVisible?: boolean;
@@ -18,6 +19,7 @@ const CartFragment = ({
 }: CartFragmentProps) => {
   const cart = useSelector((state) => state.cart.data ?? []);
   const [totalPrice, setTotalPrice] = useState(0);
+  const { isDarkMode } = useContext(DarkMode);
 
   useEffect(() => {
     if (products.length > 0 && cart.length > 0) {
@@ -58,9 +60,13 @@ const CartFragment = ({
   const limitItems = cart.slice(newestIndex(), lastIndex).reverse();
 
   return (
-    <div className="absolute top-full right-0 z-50">
+    <div className={`absolute top-full right-0 z-50 `}>
       <div className="h-2 w-full" />
-      <div className="w-lg bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+      <div
+        className={`w-lg border border-gray-200 rounded-lg shadow-lg p-6 ${
+          isDarkMode ? "bg-[#181818]" : "bg-gray-100"
+        }`}
+      >
         <div className="flex flex-col text-left mb-5">
           <h5 className="text-lg font-bold">CART</h5>
           <p className="text-gray-400 text-sm">Newest Added</p>

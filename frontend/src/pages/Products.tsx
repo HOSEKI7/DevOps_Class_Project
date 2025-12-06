@@ -17,7 +17,7 @@ const ProductsPage = () => {
 
   return (
     <Fragment>
-      <div className="mt-12 my-1">
+      <div className="mt-12 py-1">
         <h1 className="pl-2 text-xl font-semibold tracking-wider">
           MOST POPULAR PRODUCTS
         </h1>

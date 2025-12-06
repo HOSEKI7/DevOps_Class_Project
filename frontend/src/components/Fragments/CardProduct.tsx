@@ -3,6 +3,8 @@ import Button from "../Elements/Button/button";
 import { Link } from "react-router";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
+import { useContext } from "react";
+import { DarkMode } from "../../context/darkMode";
 
 type CardProductProps = {
   children: React.ReactNode;
@@ -10,9 +12,14 @@ type CardProductProps = {
 
 const CardProduct = (props: CardProductProps) => {
   const { children } = props;
+  const { isDarkMode } = useContext(DarkMode);
 
   return (
-    <div className="w-full flex flex-col gap-5 justify-between bg-neutral-100 p-3 rounded">
+    <div
+      className={`w-full flex flex-col gap-5 justify-between p-3 rounded hover:shadow-[0_0_10px_rgba(0,0,0,0.4)] ${
+        isDarkMode ? "bg-[#1f2022] text-white" : "bg-white text-black"
+      }`}
+    >
       {children}
     </div>
   );
@@ -25,9 +32,16 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps) => {
   const { image, id } = props;
+  const { isDarkMode } = useContext(DarkMode);
 
   return (
-    <div className="bg-neutral-100 p-3 overflow-hidden hover:border-1 rounded hover:border-white hover:shadow-[0_0_10px_rgba(0,0,0,0.4)]">
+    <div
+      className={`p-3 overflow-hidden hover:border-1 rounded  hover:shadow-[0_0_10px_rgba(0,0,0,0.4)] ${
+        isDarkMode
+          ? "bg-[#242427] hover:border-neutral-700"
+          : "bg-neutral-100 hover:border-white"
+      }`}
+    >
       <Link to={`/product/${id}`}>
         <img
           src={image}
@@ -49,9 +63,10 @@ type BodyProps = {
 
 const Body = (props: BodyProps) => {
   const { id, name, category, brand, children } = props;
+  const { isDarkMode } = useContext(DarkMode);
 
   return (
-    <div className="space-y-2 px-4">
+    <div className={`space-y-2 px-4`}>
       <div>
         <Link to={`/product/${id}`} className="text-base">
           {name.length > 30 ? name.substring(0, 30) + "..." : name}
@@ -68,7 +83,7 @@ const Body = (props: BodyProps) => {
         </div>
       </div>
       <div>
-        <p className="text-sm">
+        <p className={`text-sm ${isDarkMode ? "text-gray-300" : "text-black"}`}>
           {children.length > 100
             ? children.substring(0, 100) + "..."
             : children}

@@ -1,12 +1,19 @@
+import { useContext } from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { Outlet } from "react-router";
+import { DarkMode } from "../../context/darkMode";
 
 export const MainLayout = () => {
+  const { isDarkMode } = useContext(DarkMode);
   return (
     <div>
       <Navbar />
-      <main className="min-h-screen">
+      <main
+        className={`min-h-screen ${
+          isDarkMode ? "bg-[#191a1c] text-white" : "bg-white text-black"
+        }`}
+      >
         <Outlet />
       </main>
       <Footer />
