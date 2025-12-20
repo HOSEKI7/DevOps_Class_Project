@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../redux/store/hooks";
 import { useContext, useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/products";
 import { DarkMode } from "../../context/darkMode";
@@ -17,7 +17,7 @@ const CartFragment = ({
   isVisible = true,
   products = [],
 }: CartFragmentProps) => {
-  const cart = useSelector((state) => state.cart.data ?? []);
+  const cart = useAppSelector((state) => state.cart.data ?? []);
   const [totalPrice, setTotalPrice] = useState(0);
   const { isDarkMode } = useContext(DarkMode);
 

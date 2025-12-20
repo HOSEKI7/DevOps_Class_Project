@@ -4,7 +4,7 @@ import Button from "../Elements/Button/button";
 import CartFragment from "../Fragments/CartFragment";
 import { useContext, useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../redux/store/hooks";
 import type { Products } from "../../types/products";
 import { getProducts } from "../../services/product.service";
 import { DarkMode } from "../../context/darkMode";
@@ -13,7 +13,7 @@ const Navbar = () => {
   const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [totalItem, setTotalItem] = useState(0);
-  const cart = useSelector((state) => state.cart.data);
+  const cart = useAppSelector((state) => state.cart.data);
 
   const [products, setProducts] = useState<Products[]>([]);
 

@@ -102,7 +102,7 @@ const ProductDetailPage = () => {
               <div>
                 <p className="text-lg font-semibold">Description:</p>
                 <p className="text-md font-normal mt-2 text-neutral-500">
-                  {description.length > 300
+                  {description && description.length > 300
                     ? description.substring(0, 300) + " " + "See more..."
                     : description + " "}
                 </p>
