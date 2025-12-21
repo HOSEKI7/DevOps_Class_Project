@@ -6,7 +6,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store from "./redux/store/store";
 import "./index.css";
-import DarkModeContextProvider from "./context/darkMode";
+import DarkModeContextProvider from "./context/darkMode_tmp";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
