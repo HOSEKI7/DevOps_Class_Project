@@ -3,10 +3,11 @@ kind: Deployment
 metadata:
   name: mysql
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: mysql
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -15,17 +16,22 @@ spec:
       containers:
         - name: mysql
           image: mysql:8
+          ports:
+            - containerPort: 3306
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql-secret
-                  key: password
+                  key: MYSQL_ROOT_PASSWORD
             - name: MYSQL_DATABASE
-              value: hosekishops
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config
+                  key: MYSQL_DATABASE
           volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: mysql-storage
+            - name: mysql-storage
+              mountPath: /var/lib/mysql
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:

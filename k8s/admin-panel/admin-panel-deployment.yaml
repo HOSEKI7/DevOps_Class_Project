@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-store
-  namespace: ecommerce
+  name: admin-panel
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: frontend-store
+      app: admin-panel
   template:
     metadata:
       labels:
-        app: frontend-store
+        app: admin-panel
     spec:
       containers:
-        - name: frontend-store
-          image: hoseki7/frontend-store:latest
+        - name: admin-panel
+          image: hoseki7/admin-panel-hosekishops:1.0
           ports:
             - containerPort: 80
