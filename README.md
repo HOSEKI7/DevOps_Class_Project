@@ -19,7 +19,7 @@ Proyek ini bertujuan untuk memahami dan menerapkan praktik pengembangan perangka
 | **Database**               | MySQL (melalui Prisma ORM)                    |
 | **Tools & DevOps**         | Git, GitHub, npm, dotenv, Postman             |
 | **Authentication**         | JWT (JSON Web Token)                          |
-| **Hosting**                | Docker                                        |
+| **DevOps**                 | Docker & Kubernetes                           |
 
 ---
 
@@ -33,8 +33,8 @@ Admin memiliki akses ke sistem manajemen data dan analitik melalui dashboard yan
 
 - **Manajemen Produk:** CRUD produk (judul, harga, deskripsi, varian, kategori, gambar).
 - **Manajemen Pengguna:** Menampilkan dan mengelola data pengguna terdaftar(on progress).
-  <!-- - **Manajemen Transaksi & Laporan:** Melihat riwayat transaksi dan data penjualan. -->
-  <!-- - **Dark/Light Mode:** Tampilan fleksibel dan modern. -->
+- **Dark/Light Mode:** Tampilan fleksibel dan modern.
+<!-- - **Manajemen Transaksi & Laporan:** Melihat riwayat transaksi dan data penjualan. -->
 
 ---
 
@@ -48,8 +48,8 @@ Platform utama yang digunakan oleh pengguna (customer):
 - **Autentikasi Pengguna:** Login dan registrasi akun.
 - **Daftar Produk Populer:** Menampilkan card produk dengan deskripsi, harga asli, dan harga promo.
 - **Keranjang Belanja (Cart):** Tambah produk, hitung total harga secara dinamis dengan state dan hooks.
-<!-- - **Antarmuka Responsif:** Desain bersih dan mudah digunakan di desktop maupun mobile. -->
 - **Integrasi Backend:** Mengambil data produk dan pengguna([fakestoreapi](https://fakestoreapi.com/users)) secara real-time melalui API.
+<!-- - **Antarmuka Responsif:** Desain bersih dan mudah digunakan di desktop maupun mobile. -->
 
 ---
 
@@ -156,6 +156,7 @@ Proyek **HOSEKI E-Commerce** ini menjadi wadah untuk:
 - [ ] Menambahkan fitur **Checkout dan Payment Gateway**
 - [ ] Menyempurnakan **Dashboard Analitik Penjualan**
 - [ ] Implementasi **CI/CD Pipeline**
+- [ ] Implementasi **Kubernetes
   <!-- - [ ] Deployment di platform cloud (Render/Vercel/Railway) -->
   <!-- - [ ] Penambahan **Testing (Jest / Vitest)** -->
 

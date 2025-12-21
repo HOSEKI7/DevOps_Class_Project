@@ -1,0 +1,50 @@
+name: CI/CD Kubernetes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # ================= BACKEND =================
+      - name: Build & Push Backend Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/backend-hosekishops:latest ./backend
+          docker push ${{ secrets.DOCKER_USERNAME }}/backend-hosekishops:latest
+
+      # ================= FRONTEND STORE =================
+      - name: Build & Push Frontend Store Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:latest ./frontend-store
+          docker push ${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:latest
+
+      # ================= ADMIN PANEL =================
+      - name: Build & Push Admin Panel Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/admin-panel-hosekishops:latest ./admin-panel
+          docker push ${{ secrets.DOCKER_USERNAME }}/admin-panel-hosekishops:latest
+
+      # ================= KUBERNETES DEPLOY =================
+      - name: Setup kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/backend backend=${{ secrets.DOCKER_USERNAME }}/backend-hosekishops:latest
+          kubectl set image deployment/frontend-store frontend-store=${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:latest
+          kubectl set image deployment/admin-panel admin-panel=${{ secrets.DOCKER_USERNAME }}/admin-panel-hosekishops:latest
