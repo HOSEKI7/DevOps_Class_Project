@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
 import { useContext } from "react";
-import { DarkMode } from "../../context/darkMode";
+import { DarkModeContext } from "../../context/darkModeContext";
 
 type CardProductProps = {
   children: React.ReactNode;
@@ -12,7 +12,15 @@ type CardProductProps = {
 
 const CardProduct = (props: CardProductProps) => {
   const { children } = props;
-  const { isDarkMode } = useContext(DarkMode);
+  const darkMode = useContext(DarkModeContext);
+
+  if (!darkMode) {
+    throw new Error(
+      "DarkModeContext must be used within DarkModeContextProvider"
+    );
+  }
+
+  const { isDarkMode } = darkMode;
 
   return (
     <div
@@ -32,7 +40,15 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps) => {
   const { image, id } = props;
-  const { isDarkMode } = useContext(DarkMode);
+  const darkMode = useContext(DarkModeContext);
+
+  if (!darkMode) {
+    throw new Error(
+      "DarkModeContext must be used within DarkModeContextProvider"
+    );
+  }
+
+  const { isDarkMode } = darkMode;
 
   return (
     <div
@@ -63,7 +79,15 @@ type BodyProps = {
 
 const Body = (props: BodyProps) => {
   const { id, name, category, brand, children } = props;
-  const { isDarkMode } = useContext(DarkMode);
+  const darkMode = useContext(DarkModeContext);
+
+  if (!darkMode) {
+    throw new Error(
+      "DarkModeContext must be used within DarkModeContextProvider"
+    );
+  }
+
+  const { isDarkMode } = darkMode;
 
   return (
     <div className={`space-y-2 px-4`}>

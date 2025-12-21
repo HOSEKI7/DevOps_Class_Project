@@ -1,8 +1,16 @@
 import { useContext } from "react";
-import { DarkMode } from "../context/darkMode";
+import { DarkModeContext } from "../context/darkModeContext";
 
 const About = () => {
-  const { isDarkMode } = useContext(DarkMode);
+  const darkMode = useContext(DarkModeContext);
+
+  if (!darkMode) {
+    throw new Error(
+      "DarkModeContext must be used within DarkModeContextProvider"
+    );
+  }
+
+  const { isDarkMode } = darkMode;
 
   return (
     <section

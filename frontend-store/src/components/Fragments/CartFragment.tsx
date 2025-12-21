@@ -1,7 +1,7 @@
 import { useAppSelector } from "../../redux/store/hooks";
 import { useContext, useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/products";
-import { DarkMode } from "../../context/darkMode";
+import { DarkModeContext } from "../../context/darkModeContext";
 
 interface VisibleProps {
   isVisible?: boolean;
@@ -19,7 +19,15 @@ const CartFragment = ({
 }: CartFragmentProps) => {
   const cart = useAppSelector((state) => state.cart.data ?? []);
   const [totalPrice, setTotalPrice] = useState(0);
-  const { isDarkMode } = useContext(DarkMode);
+  const darkMode = useContext(DarkModeContext);
+
+  if (!darkMode) {
+    throw new Error(
+      "DarkModeContext must be used within DarkModeContextProvider"
+    );
+  }
+
+  const { isDarkMode } = darkMode;
 
   useEffect(() => {
     if (products.length > 0 && cart.length > 0) {

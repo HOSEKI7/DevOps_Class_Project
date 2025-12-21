@@ -1,17 +1,9 @@
-import { createContext, useState } from "react";
-
-type DarkModeContextType = {
-  isDarkMode: boolean;
-  setIsDarkMode: (value: boolean) => void;
-};
-
-const DarkModeContext = createContext<DarkModeContextType>({
-  isDarkMode: false,
-  setIsDarkMode: () => {},
-});
+import { useState } from "react";
+import type { ReactNode } from "react";
+import { DarkModeContext } from "./darkModeContext";
 
 type DarkModeContextProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const DarkModeContextProvider = ({
@@ -26,5 +18,4 @@ const DarkModeContextProvider = ({
   );
 };
 
-export const DarkMode = DarkModeContext;
 export default DarkModeContextProvider;

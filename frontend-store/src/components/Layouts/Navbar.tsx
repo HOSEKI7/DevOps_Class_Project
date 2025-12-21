@@ -7,15 +7,24 @@ import { useAuth } from "../../hooks/useAuth";
 import { useAppSelector } from "../../redux/store/hooks";
 import type { Products } from "../../types/products";
 import { getProducts } from "../../services/product.service";
-import { DarkMode } from "../../context/darkMode";
+import { DarkModeContext } from "../../context/darkModeContext";
 
 const Navbar = () => {
-  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [totalItem, setTotalItem] = useState(0);
   const cart = useAppSelector((state) => state.cart.data);
 
   const [products, setProducts] = useState<Products[]>([]);
+
+  const darkMode = useContext(DarkModeContext);
+
+  if (!darkMode) {
+    throw new Error(
+      "DarkModeContext must be used within DarkModeContextProvider"
+    );
+  }
+
+  const { isDarkMode, setIsDarkMode } = darkMode;
 
   useEffect(() => {
     // Ambil data produk pakai callback
