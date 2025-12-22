@@ -22,20 +22,20 @@ jobs:
       # ================= BACKEND =================
       - name: Build & Push Backend Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/backend-hosekishops:latest ./backend
-          docker push ${{ secrets.DOCKER_USERNAME }}/backend-hosekishops:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/backend-hosekishops:1.0 ./backend
+          docker push ${{ secrets.DOCKER_USERNAME }}/backend-hosekishops:1.0
 
       # ================= FRONTEND STORE =================
       - name: Build & Push Frontend Store Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:latest ./frontend-store
-          docker push ${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:1.0 ./frontend-store
+          docker push ${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:1.0
 
       # ================= FRONTEND ADMIN =================
       - name: Build & Push Frontend Admin Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend-admin-hosekishops:latest ./frontend-admin
-          docker push ${{ secrets.DOCKER_USERNAME }}/frontend-admin-hosekishops:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend-admin-hosekishops:1.0 ./frontend-admin
+          docker push ${{ secrets.DOCKER_USERNAME }}/frontend-admin-hosekishops:1.0
 
       # ================= KUBERNETES DEPLOY =================
       - name: Setup kubeconfig
@@ -45,6 +45,6 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl set image deployment/backend backend=${{ secrets.DOCKER_USERNAME }}/backend-hosekishops:latest
-          kubectl set image deployment/frontend-store frontend-store=${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:latest
-          kubectl set image deployment/frontend-admin frontend-admin=${{ secrets.DOCKER_USERNAME }}/frontend-admin-hosekishops:latest
+          kubectl set image deployment/backend backend=${{ secrets.DOCKER_USERNAME }}/backend-hosekishops:1.0
+          kubectl set image deployment/frontend-store frontend-store=${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:1.0
+          kubectl set image deployment/frontend-admin frontend-admin=${{ secrets.DOCKER_USERNAME }}/frontend-admin-hosekishops:1.0
