@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql
-  namespace: ecommerce
+  namespace: ecommerce-hosekishops
 spec:
   ports:
     - port: 3306

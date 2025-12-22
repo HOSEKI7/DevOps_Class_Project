@@ -35,10 +35,10 @@ services:
 
   frontend:
     build:
-      context: ./frontend
+      context: ./frontend-store
       dockerfile: Dockerfile
-    image: frontend-hosekishops
-    container_name: frontend-container-hosekishops
+    image: frontend-store-hosekishops
+    container_name: frontend-store-container-hosekishops
     environment:
       - VITE_API_URL=http://backend:5000
     ports:
