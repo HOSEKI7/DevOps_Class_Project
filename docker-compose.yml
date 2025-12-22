@@ -51,10 +51,10 @@ services:
 
   admin:
     build:
-      context: ./admin-panel
+      context: ./frontend-admin
       dockerfile: Dockerfile
-    image: admin-panel-hosekishops
-    container_name: admin-container-hosekishops
+    image: frontend-admin-hosekishops
+    container_name: frontend-admin-container-hosekishops
     environment:
       - VITE_API_URL=http://backend:5000
     ports:

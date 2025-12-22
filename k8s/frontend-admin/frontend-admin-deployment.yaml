@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: admin-panel
+  name: frontend-admin
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: admin-panel
+      app: frontend-admin
   template:
     metadata:
       labels:
-        app: admin-panel
+        app: frontend-admin
     spec:
       containers:
-        - name: admin-panel
-          image: hoseki7/admin-panel-hosekishops:1.0
+        - name: frontend-admin
+          image: hoseki7/frontend-admin-hosekishops:1.0
           ports:
             - containerPort: 80

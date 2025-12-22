@@ -31,11 +31,11 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:latest ./frontend-store
           docker push ${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:latest
 
-      # ================= ADMIN PANEL =================
-      - name: Build & Push Admin Panel Image
+      # ================= FRONTEND ADMIN =================
+      - name: Build & Push Frontend Admin Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/admin-panel-hosekishops:latest ./admin-panel
-          docker push ${{ secrets.DOCKER_USERNAME }}/admin-panel-hosekishops:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend-admin-hosekishops:latest ./frontend-admin
+          docker push ${{ secrets.DOCKER_USERNAME }}/frontend-admin-hosekishops:latest
 
       # ================= KUBERNETES DEPLOY =================
       - name: Setup kubeconfig
@@ -47,4 +47,4 @@ jobs:
         run: |
           kubectl set image deployment/backend backend=${{ secrets.DOCKER_USERNAME }}/backend-hosekishops:latest
           kubectl set image deployment/frontend-store frontend-store=${{ secrets.DOCKER_USERNAME }}/frontend-store-hosekishops:latest
-          kubectl set image deployment/admin-panel admin-panel=${{ secrets.DOCKER_USERNAME }}/admin-panel-hosekishops:latest
+          kubectl set image deployment/frontend-admin frontend-admin=${{ secrets.DOCKER_USERNAME }}/frontend-admin-hosekishops:latest
