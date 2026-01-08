@@ -13,7 +13,7 @@ spec:
         app: frontend-admin
     spec:
       containers:
-        - name: frontend-admin
-          image: hoseki7/frontend-admin-hosekishops:2.0
-          ports:
-            - containerPort: 80
+      - name: frontend-admin
+        image: hoseki7/hosekishops-frontend-admin:1.1
+        ports:
+        - containerPort: 80

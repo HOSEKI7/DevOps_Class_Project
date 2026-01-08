@@ -9,7 +9,6 @@ COPY . .
 
 RUN npx prisma generate
 
-ENV NODE_ENV=production
 EXPOSE 5000
 
 CMD ["npm", "run", "start"]

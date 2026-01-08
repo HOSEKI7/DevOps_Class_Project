@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: frontend-store
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: frontend-store
@@ -13,7 +13,7 @@ spec:
         app: frontend-store
     spec:
       containers:
-        - name: frontend-store
-          image: hoseki7/frontend-store-hosekishops:2.0
-          ports:
-            - containerPort: 80
+      - name: frontend-store
+        image: hoseki7/hosekishops-frontend-store:1.1
+        ports:
+        - containerPort: 80

@@ -24,9 +24,7 @@ const EditProduct = () => {
   useEffect(() => {
     const getProductById = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/products/${id}`
-        );
+        const response = await axios.get(`/api/products/${id}`);
         const data = response.data;
 
         setTitle(data.title || "");
@@ -52,7 +50,7 @@ const EditProduct = () => {
   const updateProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5000/products/${id}`, {
+      await axios.patch(`/api/products/${id}`, {
         title,
         price,
         realPrice,

@@ -19,7 +19,7 @@ const ProductList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/products");
+        const response = await axios.get("/api/products");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -31,7 +31,7 @@ const ProductList = () => {
 
   const deleteProduct = async (product: Product) => {
     try {
-      await axios.delete(`http://localhost:5000/products/${product.id}`);
+      await axios.delete(`/api/products/${product.id}`);
       // Untuk versi tanpa SWR, kita tidak memperbarui state secara langsung.
       // User harus refresh halaman untuk melihat perubahan.
     } catch (error) {

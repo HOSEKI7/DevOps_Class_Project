@@ -20,7 +20,7 @@ const AddProduct = () => {
   const saveProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/products", {
+      await axios.post("/api/products", {
         title,
         price,
         realPrice,
