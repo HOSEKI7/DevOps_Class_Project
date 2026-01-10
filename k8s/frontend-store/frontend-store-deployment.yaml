@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: frontend-store
-        image: hoseki7/hosekishops-frontend-store:1.1
+        image: hoseki7/hosekishops-frontend-store:1.0
         ports:
         - containerPort: 80
