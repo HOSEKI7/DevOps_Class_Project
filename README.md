@@ -89,6 +89,11 @@ DevOps_Class_Project/
 │   ├── src/components/
 │   └── src/context/
 │
+├── k8s/                   # Kubernetes             
+|   ├── backend/
+|   ├── frontend-admin/
+|   ├── frontend-store/
+|   └── ingress/
 └── README.md
 ```
 
